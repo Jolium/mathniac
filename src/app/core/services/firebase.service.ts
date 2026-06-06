@@ -5,7 +5,6 @@ import {
   getFirestore,
   collection,
   doc,
-  getDoc,
   query,
   orderBy,
   limit,
@@ -61,12 +60,6 @@ export class FirebaseService {
     } catch {
       return false;
     }
-  }
-
-  async nicknameExists(name: string): Promise<boolean> {
-    if (!this.db) return false;
-    const snap = await getDoc(doc(this.db, 'MathniacScores', name));
-    return snap.exists();
   }
 
   get isAvailable(): boolean {

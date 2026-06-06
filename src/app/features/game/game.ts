@@ -141,11 +141,6 @@ export class GameComponent implements OnDestroy {
     if (!name || this.submitting()) return;
     this.submitting.set(true);
     this.nicknameError.set('');
-    if (!this.storage.nickname && await this.firebase.nicknameExists(name)) {
-      this.nicknameError.set('This nickname is already taken.');
-      this.submitting.set(false);
-      return;
-    }
     const ok = await this.firebase.submitScore(name, this.storage.highScore);
     if (ok) {
       this.storage.nickname    = name;
