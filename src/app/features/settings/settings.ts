@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StorageService } from '../../core/services/storage.service';
 import { GameService } from '../../core/services/game.service';
 import { APP_VERSION } from '../../core/constants/version';
+import { AppTheme } from '../../core/services/storage.service';
 import { MnTitleComponent } from '../../shared/components/mn-title/mn-title';
 import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
 
@@ -24,6 +25,8 @@ export class SettingsComponent {
 
   showResetConfirm = signal(false);
   readonly resetBg = 'linear-gradient(135deg, #330000 0%, #880000 25%, #cc0000 50%, #880000 75%, #330000 100%)';
+
+  setTheme(t: AppTheme): void { this.storage.setTheme(t); }
 
   toggleSound(): void {
     this.storage.sound = !this.storage.soundEnabled();

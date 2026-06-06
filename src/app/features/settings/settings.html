@@ -28,6 +28,15 @@
       <button class="icon-btn reset-btn" (click)="reset()">↺</button>
     </div>
 
+    <div class="setting-row">
+      <span class="setting-pill">Layout</span>
+    </div>
+    <div class="theme-picker">
+      <button class="theme-chip" [class.on]="storage.theme() === 'classic'"   (click)="setTheme('classic')">Classic</button>
+      <button class="theme-chip" [class.on]="storage.theme() === 'synthwave'" (click)="setTheme('synthwave')">Synth</button>
+      <button class="theme-chip" [class.on]="storage.theme() === 'modern'"   (click)="setTheme('modern')">Modern</button>
+    </div>
+
     <div class="spacer"></div>
 
     <p class="version">v{{ version }}</p>

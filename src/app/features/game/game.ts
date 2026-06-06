@@ -60,6 +60,7 @@ export class GameComponent implements OnDestroy {
   });
 
   headerBoxBg = computed(() => {
+    if (this.storage.theme() !== 'classic') return '';
     const tier = LEVEL_CONFIGS[this.game.level() - 1].tier;
     const gradients: Record<string, string> = {
       green:  'linear-gradient(135deg, #003300 0%, #005500 25%, #00aa00 50%, #005500 75%, #003300 100%)',
@@ -89,7 +90,7 @@ export class GameComponent implements OnDestroy {
   });
 
   actionBg = computed((): string => {
-    if (this.game.phase() !== 'playing') return '';
+    if (this.game.phase() !== 'playing' || this.storage.theme() !== 'classic') return '';
     const tier = LEVEL_CONFIGS[this.game.level() - 1].tier;
     const gradients: Record<string, string> = {
       green:  'linear-gradient(135deg, #003300 0%, #005500 25%, #00aa00 50%, #005500 75%, #003300 100%)',

@@ -1,5 +1,106 @@
 *, *::before, *::after { box-sizing: border-box; }
 
+// ── CSS custom properties – Classic (default) ─────────────────────
+:root {
+  --mn-font:              'Courgette', cursive;
+  --mn-btn-default-bg:    linear-gradient(135deg, #1C0D02 0%, #6B3D10 18%, #B06828 42%, #C8803A 50%, #B06828 58%, #6B3D10 82%, #1C0D02 100%);
+  --mn-icon-btn-bg:       linear-gradient(135deg, #1C0D02 0%, #6B3D10 18%, #B06828 42%, #C8803A 50%, #B06828 58%, #6B3D10 82%, #1C0D02 100%);
+  --mn-btn-border:        rgba(255, 255, 255, 0.88);
+  --mn-btn-color:         #ffffff;
+  --mn-surface:           linear-gradient(180deg, #222222 0%, #080808 100%);
+  --mn-surface-border:    rgba(160, 160, 160, 0.65);
+  --mn-text:              #ffffff;
+  --mn-text-muted:        rgba(255, 255, 255, 0.55);
+  --mn-accent:            #FFD700;
+  --mn-accent-glow:       rgba(255, 215, 0, 0.45);
+  --mn-overlay-card:      rgba(10, 10, 20, 0.96);
+  --mn-overlay-border:    rgba(255, 255, 255, 0.25);
+  --mn-overlay-text:      rgba(255, 255, 255, 0.75);
+  --mn-game-btn-bg:       linear-gradient(135deg, #FF0000, #0000FF, #FF0000);
+  --mn-game-btn-border:   white;
+  --mn-game-btn-color:    white;
+  --mn-game-btn-sel-bg:   linear-gradient(135deg, #0000FF, #FF0000, #0000FF);
+  --mn-game-btn-sel-bdr:  yellow;
+  --mn-game-btn-sel-clr:  yellow;
+  --mn-game-btn-sel-glow: rgba(255, 255, 0, 0.7);
+  --mn-stat-box-bg:       rgba(0, 0, 0, 0.65);
+  --mn-stat-box-border:   rgba(255, 255, 255, 0.8);
+  --mn-stat-pill-bg:      rgba(0, 0, 0, 0.7);
+  --mn-stat-pill-border:  rgba(255, 255, 255, 0.3);
+  --mn-stat-pill-color:   rgba(255, 255, 255, 0.9);
+  --mn-score-row-bg:      rgba(0, 0, 0, 0.5);
+  --mn-score-row-border:  rgba(255, 255, 255, 0.1);
+  --mn-score-val-color:   #00ffcc;
+}
+
+// ── Synthwave ─────────────────────────────────────────────────────
+body.theme-synthwave {
+  background: #08001a;
+  --mn-font:              'Courgette', cursive;
+  --mn-btn-default-bg:    linear-gradient(135deg, #1a0033 0%, #4d0099 30%, #9900ff 50%, #4d0099 70%, #1a0033 100%);
+  --mn-icon-btn-bg:       linear-gradient(135deg, #1a0033 0%, #4d0099 30%, #9900ff 50%, #4d0099 70%, #1a0033 100%);
+  --mn-btn-border:        rgba(0, 255, 255, 0.8);
+  --mn-btn-color:         #00ffff;
+  --mn-surface:           linear-gradient(180deg, #1a0033 0%, #08001a 100%);
+  --mn-surface-border:    rgba(255, 0, 255, 0.55);
+  --mn-text:              #ffffff;
+  --mn-text-muted:        rgba(200, 100, 255, 0.75);
+  --mn-accent:            #ff00ff;
+  --mn-accent-glow:       rgba(255, 0, 255, 0.5);
+  --mn-overlay-card:      rgba(13, 0, 26, 0.97);
+  --mn-overlay-border:    rgba(255, 0, 255, 0.45);
+  --mn-overlay-text:      rgba(200, 100, 255, 0.85);
+  --mn-game-btn-bg:       linear-gradient(135deg, #0d0022, #6600cc, #0d0022);
+  --mn-game-btn-border:   rgba(0, 255, 255, 0.75);
+  --mn-game-btn-color:    #e0e0ff;
+  --mn-game-btn-sel-bg:   linear-gradient(135deg, #330066, #ff00ff, #330066);
+  --mn-game-btn-sel-bdr:  #ff00ff;
+  --mn-game-btn-sel-clr:  #FFD700;
+  --mn-game-btn-sel-glow: rgba(255, 0, 255, 0.7);
+  --mn-stat-box-bg:       rgba(13, 0, 26, 0.85);
+  --mn-stat-box-border:   rgba(255, 0, 255, 0.45);
+  --mn-stat-pill-bg:      rgba(13, 0, 26, 0.8);
+  --mn-stat-pill-border:  rgba(255, 0, 255, 0.35);
+  --mn-stat-pill-color:   rgba(200, 100, 255, 0.9);
+  --mn-score-row-bg:      rgba(26, 0, 51, 0.7);
+  --mn-score-row-border:  rgba(255, 0, 255, 0.2);
+  --mn-score-val-color:   #00ffff;
+}
+
+// ── Modern (clean light) ──────────────────────────────────────────
+body.theme-modern {
+  background: #f0f4f8;
+  --mn-font:              -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mn-btn-default-bg:    linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #6366f1 100%);
+  --mn-icon-btn-bg:       #ffffff;
+  --mn-btn-border:        transparent;
+  --mn-btn-color:         #ffffff;
+  --mn-surface:           #ffffff;
+  --mn-surface-border:    rgba(0, 0, 0, 0.12);
+  --mn-text:              #1a1a2e;
+  --mn-text-muted:        rgba(26, 26, 46, 0.5);
+  --mn-accent:            #4f46e5;
+  --mn-accent-glow:       rgba(79, 70, 229, 0.35);
+  --mn-overlay-card:      #ffffff;
+  --mn-overlay-border:    rgba(0, 0, 0, 0.1);
+  --mn-overlay-text:      rgba(26, 26, 46, 0.65);
+  --mn-game-btn-bg:       linear-gradient(135deg, #e0e7ff, #c7d2fe, #e0e7ff);
+  --mn-game-btn-border:   rgba(79, 70, 229, 0.35);
+  --mn-game-btn-color:    #1a1a2e;
+  --mn-game-btn-sel-bg:   linear-gradient(135deg, #3730a3, #6366f1, #3730a3);
+  --mn-game-btn-sel-bdr:  #4f46e5;
+  --mn-game-btn-sel-clr:  #ffffff;
+  --mn-game-btn-sel-glow: rgba(79, 70, 229, 0.5);
+  --mn-stat-box-bg:       #ffffff;
+  --mn-stat-box-border:   rgba(0, 0, 0, 0.12);
+  --mn-stat-pill-bg:      #ffffff;
+  --mn-stat-pill-border:  rgba(79, 70, 229, 0.3);
+  --mn-stat-pill-color:   #1a1a2e;
+  --mn-score-row-bg:      #ffffff;
+  --mn-score-row-border:  rgba(0, 0, 0, 0.08);
+  --mn-score-val-color:   #4f46e5;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -60,3 +161,31 @@ html, body {
 }
 
 .bg-off { background: #000; }
+
+// ── Synthwave background overrides ────────────────────────────────
+body.theme-synthwave .bg-on {
+  background: linear-gradient(
+    135deg,
+    #08001a 0%,   #08001a 8%,
+    #ff00ff 20%,  #00ffff 30%,  #ff00ff 42%,
+    #08001a 52%,  #08001a 60%,
+    #9900ff 72%,  #ff00ff 82%,  #9900ff 92%,
+    #08001a 100%
+  );
+}
+body.theme-synthwave .bg-15 {
+  background: linear-gradient(
+    135deg,
+    #08001a 0%,   #08001a 8%,
+    #ff00ff 18%,  #ffff00 28%,  #ff00ff 38%,
+    #08001a 46%,  #9900ff 54%,  #08001a 62%,
+    #ff00ff 72%,  #ffff00 82%,  #ff00ff 90%,
+    #08001a 100%
+  );
+}
+body.theme-synthwave .bg-off { background: #08001a; }
+
+// ── Modern background overrides ───────────────────────────────────
+body.theme-modern .bg-on,
+body.theme-modern .bg-15  { background: transparent; }
+body.theme-modern .bg-off  { background: #000000; }

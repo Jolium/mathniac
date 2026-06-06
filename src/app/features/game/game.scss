@@ -29,15 +29,16 @@
 }
 
 .stat-box {
-  font-family: 'Courgette', cursive;
+  font-family: var(--mn-font, 'Courgette', cursive);
   font-size: clamp(1.8rem, 6.5vw, 2.6rem);
-  color: white;
+  color: var(--mn-text, white);
   font-variant-numeric: tabular-nums;
   width: 100%;
   min-width: clamp(72px, 18vw, 96px);
   padding: 8px 14px;
   border-radius: 14px;
-  border: 2.5px solid rgba(255, 255, 255, 0.8);
+  border: 2.5px solid var(--mn-stat-box-border, rgba(255, 255, 255, 0.8));
+  background: var(--mn-stat-box-bg, rgba(0, 0, 0, 0.65));
   text-align: center;
   transition: background 0.3s;
 
@@ -46,11 +47,11 @@
 }
 
 .stat-pill {
-  font-family: 'Courgette', cursive;
+  font-family: var(--mn-font, 'Courgette', cursive);
   font-size: clamp(0.9rem, 3vw, 1.15rem);
-  color: rgba(255,255,255,0.9);
-  background: rgba(0,0,0,0.7);
-  border: 1.5px solid rgba(255,255,255,0.3);
+  color: var(--mn-stat-pill-color, rgba(255, 255, 255, 0.9));
+  background: var(--mn-stat-pill-bg, rgba(0, 0, 0, 0.7));
+  border: 1.5px solid var(--mn-stat-pill-border, rgba(255, 255, 255, 0.3));
   border-radius: 50px;
   width: 100%;
   padding: 5px 14px;
@@ -125,8 +126,8 @@ mn-button.action-btn { flex: 1.5; min-width: 0; }
 }
 
 .overlay-card {
-  background: rgba(10,10,20,0.95);
-  border: 2px solid rgba(255,255,255,0.25);
+  background: var(--mn-overlay-card, rgba(10, 10, 20, 0.95));
+  border: 2px solid var(--mn-overlay-border, rgba(255, 255, 255, 0.25));
   border-radius: 20px;
   padding: 28px 24px;
   max-width: 320px;
@@ -136,12 +137,12 @@ mn-button.action-btn { flex: 1.5; min-width: 0; }
   align-items: center;
   gap: 12px;
   text-align: center;
-  color: white;
+  color: var(--mn-text, white);
 
   h2 {
     font-family: 'Niconne', cursive;
     font-size: clamp(1.5rem, 5vw, 2rem);
-    text-shadow: 0 0 12px rgba(255,255,255,0.5);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
     margin: 0;
   }
 }
@@ -151,10 +152,10 @@ mn-button.action-btn { flex: 1.5; min-width: 0; }
 .overlay-card mn-button { width: 85%; }
 
 .overlay-sub {
-  color: rgba(255,255,255,0.75);
+  color: var(--mn-overlay-text, rgba(255, 255, 255, 0.75));
   font-size: 0.95rem;
   margin: 0;
-  strong { color: white; }
+  strong { color: var(--mn-text, white); }
 }
 
 .countdown-hint {

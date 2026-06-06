@@ -8,9 +8,9 @@
   width: clamp(72px, 20vw, 104px);
   height: clamp(72px, 20vw, 104px);
   border-radius: clamp(20px, 5vw, 28px);
-  border: 3px solid white;
-  background: linear-gradient(135deg, #FF0000, #0000FF, #FF0000);
-  color: white;
+  border: 3px solid var(--mn-game-btn-border, white);
+  background: var(--mn-game-btn-bg, linear-gradient(135deg, #FF0000, #0000FF, #FF0000));
+  color: var(--mn-game-btn-color, white);
   font-family: 'Arial Rounded MT Bold', 'Nunito', 'Arial', sans-serif;
   font-size: clamp(2.4rem, 8vw, 3.5rem);
   font-weight: bold;
@@ -42,10 +42,10 @@
   }
 
   &.selected {
-    background: linear-gradient(135deg, #0000FF, #FF0000, #0000FF);
-    border-color: yellow;
-    color: yellow;
-    box-shadow: 0 0 12px rgba(255,255,0,0.7);
+    background: var(--mn-game-btn-sel-bg, linear-gradient(135deg, #0000FF, #FF0000, #0000FF));
+    border-color: var(--mn-game-btn-sel-bdr, yellow);
+    color: var(--mn-game-btn-sel-clr, yellow);
+    box-shadow: 0 0 12px var(--mn-game-btn-sel-glow, rgba(255, 255, 0, 0.7));
   }
 
   &.silver-tier {
@@ -57,6 +57,23 @@
       border-color: yellow;
       color: yellow;
       box-shadow: 0 0 12px rgba(192,192,192,0.7);
+    }
+  }
+}
+
+// For non-classic themes, silver-tier uses the same theme vars as regular buttons.
+:host-context(body.theme-synthwave),
+:host-context(body.theme-modern) {
+  .game-btn.silver-tier {
+    background: var(--mn-game-btn-bg);
+    border-color: var(--mn-game-btn-border);
+    color: var(--mn-game-btn-color);
+
+    &.selected {
+      background: var(--mn-game-btn-sel-bg);
+      border-color: var(--mn-game-btn-sel-bdr);
+      color: var(--mn-game-btn-sel-clr);
+      box-shadow: 0 0 12px var(--mn-game-btn-sel-glow);
     }
   }
 }

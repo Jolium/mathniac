@@ -1,6 +1,7 @@
-import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal, effect, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
+import { StorageService } from './core/services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -50,9 +51,18 @@ import { SwUpdate } from '@angular/service-worker';
 })
 export class AppComponent {
   private readonly updates = inject(SwUpdate);
+  private readonly storage = inject(StorageService);
   readonly updateReady = signal(false);
 
   constructor() {
+    // Apply theme class to body immediately, then reactively on changes.
+    const applyTheme = (t: string) => {
+      document.body.classList.remove('theme-synthwave', 'theme-modern');
+      if (t !== 'classic') document.body.classList.add(`theme-${t}`);
+    };
+    applyTheme(this.storage.theme());
+    effect(() => applyTheme(this.storage.theme()));
+
     // Only active in production builds where the service worker is enabled.
     if (this.updates.isEnabled) {
       this.updates.versionUpdates.subscribe(e => {

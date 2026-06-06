@@ -8,8 +8,8 @@
   width: 100%;
   padding: 18px 20px;
   border-radius: 26px;
-  border: 3px solid rgba(255, 255, 255, 0.88);
-  background: var(--mn-btn-bg, linear-gradient(
+  border: 3px solid var(--mn-btn-border, rgba(255, 255, 255, 0.88));
+  background: var(--mn-btn-bg, var(--mn-btn-default-bg, linear-gradient(
     135deg,
     #1C0D02 0%,
     #6B3D10 18%,
@@ -18,9 +18,9 @@
     #B06828 58%,
     #6B3D10 82%,
     #1C0D02 100%
-  ));
-  color: white;
-  font-family: 'Courgette', cursive;
+  )));
+  color: var(--mn-btn-color, white);
+  font-family: var(--mn-font, 'Courgette', cursive);
   font-size: clamp(1.1rem, 3.5vw, 1.35rem);
   cursor: pointer;
   text-align: center;
@@ -35,11 +35,11 @@
   &:disabled { opacity: 0.4; cursor: not-allowed; }
 
   &.highlight {
-    border-color: #FFD700;
-    color: #FFD700;
+    border-color: var(--mn-accent, #FFD700);
+    color: var(--mn-accent, #FFD700);
     box-shadow:
       0 4px 14px rgba(0, 0, 0, 0.75),
-      0 0 18px rgba(255, 215, 0, 0.45);
+      0 0 18px var(--mn-accent-glow, rgba(255, 215, 0, 0.45));
   }
 
   &.success {

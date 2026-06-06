@@ -1,6 +1,8 @@
 import { Injectable, signal } from '@angular/core';
 import { LEVEL_CONFIGS } from '../constants/level-config';
 
+export type AppTheme = 'classic' | 'synthwave' | 'modern';
+
 const K = {
   level:       'mn_level',
   sound:       'mn_sound',
@@ -8,6 +10,7 @@ const K = {
   highScore:   'mn_highScore',
   nickname:    'mn_nickname',
   uploadScore: 'mn_uploadScore',
+  theme:       'mn_theme',
 } as const;
 
 @Injectable({ providedIn: 'root' })
@@ -15,11 +18,17 @@ export class StorageService {
   readonly level         = signal(this.clampLevel(this.readInt(K.level, 1)));
   readonly soundEnabled  = signal(this.readBool(K.sound, true));
   readonly backgroundOn  = signal(this.readBool(K.background, true));
+  readonly theme         = signal<AppTheme>((localStorage.getItem(K.theme) as AppTheme) ?? 'classic');
 
   setLevel(v: number): void {
     const lvl = this.clampLevel(v);
     this.level.set(lvl);
     localStorage.setItem(K.level, String(lvl));
+  }
+
+  setTheme(v: AppTheme): void {
+    this.theme.set(v);
+    localStorage.setItem(K.theme, v);
   }
 
   get sound(): boolean       { return this.soundEnabled(); }

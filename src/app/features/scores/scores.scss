@@ -82,16 +82,16 @@
 .score-row {
   display: flex;
   align-items: center;
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--mn-score-row-bg, rgba(0, 0, 0, 0.5));
+  border: 1px solid var(--mn-score-row-border, rgba(255, 255, 255, 0.1));
   border-radius: 8px;
   padding: 10px 22px;
-  color: white;
+  color: var(--mn-text, white);
   gap: 10px;
 
   &.top3 {
-    border-color: rgba(255,215,0,0.4);
-    background: rgba(20,20,0,0.6);
+    border-color: var(--mn-accent-glow, rgba(255, 215, 0, 0.4));
+    background: var(--mn-score-row-bg, rgba(20, 20, 0, 0.6));
   }
 }
 
@@ -101,9 +101,9 @@
 }
 
 .rank {
-  font-family: 'Courgette', cursive;
+  font-family: var(--mn-font, 'Courgette', cursive);
   font-size: 1rem;
-  color: #FFD700;
+  color: var(--mn-accent, #FFD700);
   min-width: 32px;
 }
 
@@ -117,9 +117,9 @@
 }
 
 .score-val {
-  font-family: 'Courgette', cursive;
+  font-family: var(--mn-font, 'Courgette', cursive);
   font-size: 1.1rem;
-  color: #00ffcc;
+  color: var(--mn-score-val-color, #00ffcc);
 }
 
 .personal-best {

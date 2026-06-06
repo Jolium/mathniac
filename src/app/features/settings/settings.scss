@@ -25,14 +25,14 @@
 
 .setting-pill {
   flex: 1;
-  background: linear-gradient(180deg, #222222 0%, #080808 100%);
-  border: 2px solid rgba(160, 160, 160, 0.65);
+  background: var(--mn-surface, linear-gradient(180deg, #222222 0%, #080808 100%));
+  border: 2px solid var(--mn-surface-border, rgba(160, 160, 160, 0.65));
   border-radius: 50px;
   padding: 13px 24px;
-  font-family: 'Courgette', cursive;
+  font-family: var(--mn-font, 'Courgette', cursive);
   font-style: italic;
   font-size: clamp(1rem, 3.5vw, 1.2rem);
-  color: white;
+  color: var(--mn-text, white);
   box-shadow:
     0 4px 10px rgba(0, 0, 0, 0.8),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -42,8 +42,8 @@
   width: 68px;
   height: 68px;
   border-radius: 20px;
-  border: 3px solid rgba(255, 215, 0, 0.35);
-  background: linear-gradient(
+  border: 3px solid var(--mn-surface-border, rgba(255, 215, 0, 0.35));
+  background: var(--mn-icon-btn-bg, linear-gradient(
     135deg,
     #1C0D02 0%,
     #6B3D10 18%,
@@ -52,8 +52,8 @@
     #B06828 58%,
     #6B3D10 82%,
     #1C0D02 100%
-  );
-  color: rgba(255, 215, 0, 0.4);
+  ));
+  color: var(--mn-text-muted, rgba(255, 215, 0, 0.4));
   font-size: 1.7rem;
   cursor: pointer;
   display: flex;
@@ -64,15 +64,41 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
 
   &.on {
-    border-color: #FFD700;
-    color: #FFD700;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7), 0 0 14px rgba(255, 215, 0, 0.5);
+    border-color: var(--mn-accent, #FFD700);
+    color: var(--mn-accent, #FFD700);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7), 0 0 14px var(--mn-accent-glow, rgba(255, 215, 0, 0.5));
   }
 
   &.reset-btn {
     border-color: #FF3333;
     color: #FF3333;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 51, 51, 0.4);
+  }
+}
+
+// ── Theme picker ──────────────────────────────────────
+.theme-picker {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.theme-chip {
+  flex: 1;
+  height: 52px;
+  border-radius: 16px;
+  border: 2px solid var(--mn-surface-border, rgba(160, 160, 160, 0.35));
+  background: var(--mn-icon-btn-bg, linear-gradient(180deg, #222 0%, #080808 100%));
+  color: var(--mn-text-muted, rgba(255, 255, 255, 0.5));
+  font-family: var(--mn-font, 'Courgette', cursive);
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+
+  &.on {
+    border-color: var(--mn-accent, #FFD700);
+    color: var(--mn-accent, #FFD700);
+    box-shadow: 0 0 10px var(--mn-accent-glow, rgba(255, 215, 0, 0.4));
   }
 }
 
@@ -110,8 +136,8 @@ mn-button {
 }
 
 .overlay-card {
-  background: rgba(10, 10, 20, 0.96);
-  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: var(--mn-overlay-card, rgba(10, 10, 20, 0.96));
+  border: 2px solid var(--mn-overlay-border, rgba(255, 255, 255, 0.25));
   border-radius: 20px;
   padding: 28px 24px;
   max-width: 300px;
@@ -121,10 +147,10 @@ mn-button {
   align-items: center;
   gap: 14px;
   text-align: center;
-  color: white;
+  color: var(--mn-text, white);
 
   h2 {
-    font-family: 'Courgette', cursive;
+    font-family: var(--mn-font, 'Courgette', cursive);
     font-size: 1.5rem;
     margin: 0;
   }
