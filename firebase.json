@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "mathniac",
     "public": "dist/mathniac-angular/browser",
     "ignore": [
       "firebase.json",
