@@ -1,27 +1,32 @@
 <div [class]="'screen ' + bgClass()">
   <div class="content">
 
-    <div class="page-title">Introduction</div>
+    <mn-title label="Introduction" />
 
-    <div class="intro-body">
-
+    <div class="card">
       <p>
         The goal of Mathniac is to select numbers that together equal the goal value
         shown at the top of the screen.
       </p>
+    </div>
 
+    <div class="card">
       <p>
         Each button shows a number. Tap buttons to select them — they light up in yellow.
         The <em>Goal</em> counter decreases as you build your sum.
         Tap a selected button again to deselect it.
       </p>
+    </div>
 
+    <div class="card">
       <p>
         If your running total <strong>exceeds</strong> the goal, or you select a number
         that is <strong>already in your selection</strong>, all selected buttons clear
         and you must start the combo again.
       </p>
+    </div>
 
+    <div class="card">
       <p><strong>Points per combo:</strong></p>
       <table>
         <tr><td>2 buttons</td><td>10 pts</td></tr>
@@ -30,26 +35,31 @@
         <tr><td>5 buttons</td><td>40 pts</td></tr>
         <tr><td>6 buttons</td><td>54 pts</td></tr>
       </table>
+    </div>
 
+    <div class="card">
       <p>
         Every <strong>20 points</strong> earned adds <strong>1 extra second</strong>
         to the timer. Chain big combos to keep the clock running!
       </p>
+    </div>
 
+    <div class="card">
       <p>
         There are <strong>15 levels</strong>, each with a score target and a countdown
         timer. Reach the target before time runs out to unlock the next level.
         Level 15 is endless — beat your own high score!
       </p>
+    </div>
 
+    <div class="card">
       <p>
         A new high score on level 15 is submitted to the global leaderboard.
         Good luck!
       </p>
-
     </div>
 
-    <button class="mn-btn back-btn" (click)="back()">Home</button>
+    <mn-button label="Home" (press)="back()" />
 
   </div>
 </div>

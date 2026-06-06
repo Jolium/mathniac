@@ -1,0 +1,9 @@
+<button
+  class="btn"
+  [class.highlight]="variant === 'highlight'"
+  [class.success]="variant === 'success'"
+  [class.small]="size === 'small'"
+  [disabled]="disabled"
+  (click)="press.emit()">
+  {{ label }}
+</button>

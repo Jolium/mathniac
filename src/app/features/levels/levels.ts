@@ -4,11 +4,14 @@ import { GameService } from '../../core/services/game.service';
 import { StorageService } from '../../core/services/storage.service';
 import { LEVEL_CONFIGS } from '../../core/constants/level-config';
 import { LevelConfig } from '../../core/models/level.model';
+import { MnTitleComponent } from '../../shared/components/mn-title/mn-title';
+import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
 
 @Component({
   selector: 'app-levels',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MnTitleComponent, MnButtonComponent],
   templateUrl: './levels.html',
   styleUrl: './levels.scss',
 })

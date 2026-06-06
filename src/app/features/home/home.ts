@@ -3,11 +3,14 @@ import { Router } from '@angular/router';
 import { GameService } from '../../core/services/game.service';
 import { StorageService } from '../../core/services/storage.service';
 import { LEVEL_CONFIGS } from '../../core/constants/level-config';
+import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
+import { MnTitleComponent } from '../../shared/components/mn-title/mn-title';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MnButtonComponent, MnTitleComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

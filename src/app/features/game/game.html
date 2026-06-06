@@ -39,27 +39,13 @@
   </div>
 
   <!-- Bottom Bar -->
-  <div class="bottom-bar">
-    <button
-      class="mn-btn nav-btn"
-      [disabled]="game.isTicking()"
-      (click)="goHome()">
-      Home
-    </button>
-
-    <button
-      class="mn-btn action-btn"
-      [class.refresh]="game.phase() === 'playing'"
-      (click)="onActionClick()">
-      {{ actionLabel() }}
-    </button>
-
-    <button
-      class="mn-btn nav-btn"
-      [disabled]="game.isTicking()"
-      (click)="goLevels()">
-      Levels
-    </button>
+  <div class="bottom-bar" [class.is-playing]="game.phase() === 'playing'">
+    <mn-button class="nav-btn" size="small" label="Home"
+      [disabled]="game.isTicking()" (press)="goHome()" />
+    <mn-button class="action-btn"
+      [label]="actionLabel()" [style.--mn-btn-bg]="actionBg()" (press)="onActionClick()" />
+    <mn-button class="nav-btn" size="small" label="Levels"
+      [disabled]="game.isTicking()" (press)="goLevels()" />
   </div>
 
   <!-- Win Overlay -->
@@ -71,9 +57,9 @@
         <p class="overlay-sub">Score: <strong [style.color]="game.levelColor">{{ game.score() }}</strong></p>
         @if (winCountdown() > 0) {
           <p class="countdown-hint">Continue in {{ winCountdown() }}…</p>
-          <button class="mn-btn" disabled>Continue →</button>
+          <mn-button label="Continue →" [disabled]="true" />
         } @else {
-          <button class="mn-btn play-btn" (click)="continueAfterWin()">Continue →</button>
+          <mn-button label="Continue →" variant="highlight" (press)="continueAfterWin()" />
         }
       </div>
     </div>
@@ -102,16 +88,15 @@
             <p class="nickname-error">{{ nicknameError() }}</p>
           }
           }
-          <button
-            class="mn-btn submit-btn"
+          <mn-button
+            variant="highlight"
+            [label]="submitting() ? 'Submitting…' : 'Submit Score'"
             [disabled]="submitting() || !nickname().trim()"
-            (click)="submitHighScore()">
-            {{ submitting() ? 'Submitting…' : 'Submit Score' }}
-          </button>
+            (press)="submitHighScore()" />
         } @else {
           <p class="submitted-ok">✓ Score submitted!</p>
         }
-        <button class="mn-btn" (click)="continueHighscore()">Continue</button>
+        <mn-button label="Continue" (press)="continueHighscore()" />
       </div>
     </div>
   }

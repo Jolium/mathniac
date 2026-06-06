@@ -15,10 +15,7 @@ export class GameService {
   private readonly audio   = inject(AudioService);
 
   readonly level        = computed(() => this.storage.level());
-  readonly bgClass      = computed(() => {
-    if (!this.storage.backgroundOn()) return 'bg-off';
-    return this.level() === 15 ? 'bg-15' : 'bg-on';
-  });
+  readonly bgClass      = computed(() => this.storage.backgroundOn() ? 'bg-on' : 'bg-off');
 
   score         = signal(0);
   countdown     = signal(0);

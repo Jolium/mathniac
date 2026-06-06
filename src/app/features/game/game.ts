@@ -4,6 +4,7 @@ import { GameService } from '../../core/services/game.service';
 import { StorageService } from '../../core/services/storage.service';
 import { FirebaseService } from '../../core/services/firebase.service';
 import { GameButtonComponent } from './components/game-button/game-button';
+import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
 import { LEVEL_CONFIGS } from '../../core/constants/level-config';
 
 interface ButtonCell { value: number; index: number; selected: boolean; }
@@ -12,7 +13,7 @@ interface ButtonCell { value: number; index: number; selected: boolean; }
   selector: 'app-game',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [GameButtonComponent],
+  imports: [GameButtonComponent, MnButtonComponent],
   templateUrl: './game.html',
   styleUrl: './game.scss',
 })
@@ -59,21 +60,21 @@ export class GameComponent implements OnDestroy {
   });
 
   headerBoxBg = computed(() => {
-    const level = this.game.level();
-    const colors: Record<string, string> = {
-      green:  'rgba(0,90,0,0.95)',
-      blue:   'rgba(0,0,130,0.95)',
-      violet: 'rgba(90,0,160,0.95)',
-      red:    'rgba(140,0,0,0.95)',
-      silver: 'rgba(70,70,90,0.95)',
+    const tier = LEVEL_CONFIGS[this.game.level() - 1].tier;
+    const gradients: Record<string, string> = {
+      green:  'linear-gradient(135deg, #003300 0%, #005500 25%, #00aa00 50%, #005500 75%, #003300 100%)',
+      blue:   'linear-gradient(135deg, #000033 0%, #000066 25%, #0000cc 50%, #000066 75%, #000033 100%)',
+      violet: 'linear-gradient(135deg, #1a0033 0%, #3d0066 25%, #7700cc 50%, #3d0066 75%, #1a0033 100%)',
+      red:    'linear-gradient(135deg, #330000 0%, #660000 25%, #cc0000 50%, #660000 75%, #330000 100%)',
+      silver: 'linear-gradient(135deg, #1a1a22 0%, #3a3a4a 25%, #6a6a7a 50%, #3a3a4a 75%, #1a1a22 100%)',
     };
-    return colors[LEVEL_CONFIGS[level - 1].tier] ?? 'rgba(0,90,0,0.95)';
+    return gradients[tier] ?? gradients['green'];
   });
 
   timerBoxBg = computed(() => {
     const c = this.game.countdown();
-    if (c <= 10) return 'rgba(180,0,0,0.95)';
-    if (c <= 30) return 'rgba(155,60,0,0.95)';
+    if (c <= 10) return 'linear-gradient(135deg, #330000 0%, #880000 25%, #cc0000 50%, #880000 75%, #330000 100%)';
+    if (c <= 30) return 'linear-gradient(135deg, #331100 0%, #883300 25%, #cc6600 50%, #883300 75%, #331100 100%)';
     return this.headerBoxBg();
   });
 
@@ -85,6 +86,19 @@ export class GameComponent implements OnDestroy {
       case 'again':   return 'Again';
       default:        return 'Start';
     }
+  });
+
+  actionBg = computed((): string => {
+    if (this.game.phase() !== 'playing') return '';
+    const tier = LEVEL_CONFIGS[this.game.level() - 1].tier;
+    const gradients: Record<string, string> = {
+      green:  'linear-gradient(135deg, #003300 0%, #005500 25%, #00aa00 50%, #005500 75%, #003300 100%)',
+      blue:   'linear-gradient(135deg, #000033 0%, #000066 25%, #0000cc 50%, #000066 75%, #000033 100%)',
+      violet: 'linear-gradient(135deg, #1a0033 0%, #3d0066 25%, #7700cc 50%, #3d0066 75%, #1a0033 100%)',
+      red:    'linear-gradient(135deg, #330000 0%, #660000 25%, #cc0000 50%, #660000 75%, #330000 100%)',
+      silver: 'linear-gradient(135deg, #1a1a22 0%, #3a3a4a 25%, #6a6a7a 50%, #3a3a4a 75%, #1a1a22 100%)',
+    };
+    return gradients[tier] ?? '';
   });
 
   constructor() {

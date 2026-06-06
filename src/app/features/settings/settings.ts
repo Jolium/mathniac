@@ -3,11 +3,14 @@ import { Router } from '@angular/router';
 import { StorageService } from '../../core/services/storage.service';
 import { GameService } from '../../core/services/game.service';
 import { APP_VERSION } from '../../core/constants/version';
+import { MnTitleComponent } from '../../shared/components/mn-title/mn-title';
+import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MnTitleComponent, MnButtonComponent],
   templateUrl: './settings.html',
   styleUrl: './settings.scss',
 })

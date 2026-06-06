@@ -13,5 +13,5 @@
   (pointerleave)="onPointerUp()"
   (keydown.enter)="onKeyActivate($event)"
   (keydown.space)="onKeyActivate($event)">
-  {{ value() === 0 ? '?' : value() }}
+  {{ isTicking() ? value() : '?' }}
 </button>

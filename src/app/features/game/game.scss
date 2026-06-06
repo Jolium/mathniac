@@ -14,7 +14,7 @@
   align-items: flex-start;
   width: 100%;
   max-width: 500px;
-  padding: 12px 16px 0;
+  padding: 24px 24px 0;
   gap: 8px;
 }
 
@@ -25,17 +25,19 @@
   gap: 5px;
   flex: 1;
 
-  &.center { flex: 1.4; }
+  &.center { flex: 1.7; }
 }
 
 .stat-box {
   font-family: 'Courgette', cursive;
-  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-size: clamp(1.8rem, 6.5vw, 2.6rem);
   color: white;
   font-variant-numeric: tabular-nums;
-  min-width: clamp(52px, 14vw, 72px);
-  padding: 4px 10px;
-  border-radius: 10px;
+  width: 100%;
+  min-width: clamp(72px, 18vw, 96px);
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: 2.5px solid rgba(255, 255, 255, 0.8);
   text-align: center;
   transition: background 0.3s;
 
@@ -45,14 +47,17 @@
 
 .stat-pill {
   font-family: 'Courgette', cursive;
-  font-size: clamp(0.65rem, 2.2vw, 0.8rem);
-  color: rgba(255,255,255,0.85);
+  font-size: clamp(0.9rem, 3vw, 1.15rem);
+  color: rgba(255,255,255,0.9);
   background: rgba(0,0,0,0.7);
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1.5px solid rgba(255,255,255,0.3);
   border-radius: 50px;
-  padding: 3px 10px;
+  width: 100%;
+  padding: 5px 14px;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 @keyframes pulse-warn {
@@ -92,27 +97,15 @@
   align-items: center;
   width: 100%;
   max-width: 500px;
-  padding: 8px 16px 16px;
+  padding: 8px 24px 24px;
   gap: 8px;
 }
 
-.nav-btn {
-  font-size: clamp(0.75rem, 2.5vw, 0.95rem);
-  padding: 8px 12px;
-  min-width: 70px;
-}
+mn-button.nav-btn   { flex: 1;   min-width: 0; }
+mn-button.action-btn { flex: 1.5; min-width: 0; }
 
-.action-btn {
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  padding: 10px 20px;
-  min-width: 100px;
-
-  &.refresh {
-    background: linear-gradient(180deg, #1a8800, #33cc00, #1a8800);
-    border-color: #44dd00;
-    box-shadow: 0 0 12px rgba(51,204,0,0.5);
-  }
-}
+.bottom-bar.is-playing mn-button.nav-btn    { flex: 0.75; }
+.bottom-bar.is-playing mn-button.action-btn { flex: 2; }
 
 // ── Overlays ───────────────────────────────────────────
 .overlay {
@@ -155,6 +148,8 @@
 
 .overlay-icon { font-size: 3rem; }
 
+.overlay-card mn-button { width: 85%; }
+
 .overlay-sub {
   color: rgba(255,255,255,0.75);
   font-size: 0.95rem;
@@ -187,19 +182,6 @@
 
   &::placeholder { color: rgba(255,255,255,0.4); }
   &:focus { border-color: #FFD700; }
-}
-
-.submit-btn {
-  background: linear-gradient(180deg, #FFD700, #FFA500, #FFD700);
-  color: #000;
-  border-color: #FFD700;
-  &:disabled { opacity: 0.5; }
-}
-
-.play-btn {
-  background: linear-gradient(180deg, #FFD700, #FFA500, #FFD700);
-  color: #000;
-  border-color: #FFD700;
 }
 
 .submitted-ok {

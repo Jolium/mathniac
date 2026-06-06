@@ -9,36 +9,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 28px 20px 24px;
+  gap: 14px;
+  padding: 24px 24px;
   width: 100%;
   max-width: 400px;
   min-height: 100dvh;
 }
 
-.home-title {
-  font-size: clamp(1.3rem, 5vw, 1.7rem);
-  padding: 10px 40px;
-  margin-bottom: 4px;
-}
 
-.nav-buttons {
+.btn-group {
+  width: 65%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  gap: 12px;
 }
 
-.spacer { flex: 1; min-height: 20px; }
-
-.level-up-btn {
-  width: 100%;
-  border-color: #FFD700;
-  box-shadow: 0 0 14px rgba(255,215,0,0.4), 0 3px 8px rgba(0,0,0,0.6);
-}
+.spacer { flex: 1; min-height: 16px; }
 
 .level-pill {
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.78);
   border: 1.5px solid rgba(255,255,255,0.35);
   border-radius: 50px;
   padding: 7px 28px;
@@ -46,11 +35,4 @@
   font-size: clamp(1rem, 3.5vw, 1.2rem);
   color: white;
   text-align: center;
-}
-
-.play-btn {
-  width: 100%;
-  margin-bottom: 8px;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
-  padding: 16px 20px;
 }

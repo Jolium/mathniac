@@ -5,14 +5,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(50px, 13vw, 72px);
-  height: clamp(50px, 13vw, 72px);
-  border-radius: clamp(12px, 3vw, 18px);
+  width: clamp(62px, 17vw, 90px);
+  height: clamp(62px, 17vw, 90px);
+  border-radius: clamp(20px, 5vw, 28px);
   border: 3px solid white;
   background: linear-gradient(135deg, #FF0000, #0000FF, #FF0000);
   color: white;
   font-family: 'Courgette', cursive;
-  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  font-size: clamp(1.3rem, 4.5vw, 1.9rem);
   font-weight: bold;
   cursor: default;
   user-select: none;

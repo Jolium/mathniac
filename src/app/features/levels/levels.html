@@ -1,7 +1,9 @@
 <div [class]="'screen ' + bgClass()">
   <div class="content">
 
-    <div class="page-title">Levels</div>
+    <mn-title label="Levels" />
+
+    <div class="spacer"></div>
 
     <!-- Circular badge layout -->
     <div class="badge-arena">
@@ -62,15 +64,15 @@
       </div>
     </div>
 
+    <div class="spacer"></div>
+
     <!-- Action buttons -->
     <div class="actions">
-      <button
-        class="mn-btn play-btn"
+      <mn-button
+        [label]="'Play Level ' + selectedLevel()"
         [disabled]="!isUnlocked(selectedLevel())"
-        (click)="playSelected()">
-        Play Level {{ selectedLevel() }}
-      </button>
-      <button class="mn-btn" (click)="back()">Home</button>
+        (press)="playSelected()" />
+      <mn-button label="Home" (press)="back()" />
     </div>
 
   </div>
