@@ -1,6 +1,6 @@
 import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { FirebaseService } from '../../core/services/firebase.service';
 import { StorageService } from '../../core/services/storage.service';
 import { GameService } from '../../core/services/game.service';
@@ -16,7 +16,7 @@ import { MnTitleComponent } from '../../shared/components/mn-title/mn-title';
   styleUrl: './scores.scss',
 })
 export class ScoresComponent {
-  private readonly router   = inject(Router);
+  private readonly location = inject(Location);
   private readonly firebase = inject(FirebaseService);
   readonly storage          = inject(StorageService);
   private readonly game     = inject(GameService);
@@ -54,5 +54,5 @@ export class ScoresComponent {
     this.submitting.set(false);
   }
 
-  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
+  back(): void { this.location.back(); }
 }

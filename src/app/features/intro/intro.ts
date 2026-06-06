@@ -1,5 +1,5 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { GameService } from '../../core/services/game.service';
 import { MnTitleComponent } from '../../shared/components/mn-title/mn-title';
 import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
@@ -13,10 +13,10 @@ import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
   styleUrl: './intro.scss',
 })
 export class IntroComponent {
-  private readonly router = inject(Router);
-  private readonly game   = inject(GameService);
+  private readonly location = inject(Location);
+  private readonly game     = inject(GameService);
 
   readonly bgClass = this.game.bgClass;
 
-  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
+  back(): void { this.location.back(); }
 }

@@ -1,5 +1,6 @@
 import { Component, inject, signal, computed, effect, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { GameService } from '../../core/services/game.service';
 import { StorageService } from '../../core/services/storage.service';
 import { FirebaseService } from '../../core/services/firebase.service';
@@ -20,7 +21,8 @@ interface ButtonCell { value: number; index: number; selected: boolean; }
 export class GameComponent implements OnDestroy {
   readonly game     = inject(GameService);
   readonly storage  = inject(StorageService);
-  private readonly router   = inject(Router);
+  private readonly router    = inject(Router);
+  private readonly location  = inject(Location);
   private readonly firebase = inject(FirebaseService);
 
   winCountdown   = signal(5);
@@ -158,7 +160,7 @@ export class GameComponent implements OnDestroy {
 
   goHome(): void {
     if (this.game.isTicking()) return;
-    this.router.navigate(['/home'], { replaceUrl: true });
+    this.location.back();
   }
 
   goLevels(): void {

@@ -1,5 +1,6 @@
 import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { GameService } from '../../core/services/game.service';
 import { StorageService } from '../../core/services/storage.service';
 import { LEVEL_CONFIGS } from '../../core/constants/level-config';
@@ -16,8 +17,9 @@ import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
   styleUrl: './levels.scss',
 })
 export class LevelsComponent {
-  private readonly router  = inject(Router);
-  private readonly game    = inject(GameService);
+  private readonly router    = inject(Router);
+  private readonly location  = inject(Location);
+  private readonly game      = inject(GameService);
   readonly storage         = inject(StorageService);
 
   readonly outerConfigs = LEVEL_CONFIGS.slice(0, 14);
@@ -71,5 +73,5 @@ export class LevelsComponent {
     this.router.navigate(['/game'], { replaceUrl: true });
   }
 
-  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
+  back(): void { this.location.back(); }
 }

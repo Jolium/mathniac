@@ -1,5 +1,5 @@
 import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { StorageService } from '../../core/services/storage.service';
 import { GameService } from '../../core/services/game.service';
 import { APP_VERSION } from '../../core/constants/version';
@@ -16,8 +16,8 @@ import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
   styleUrl: './settings.scss',
 })
 export class SettingsComponent {
-  private readonly router = inject(Router);
-  readonly storage        = inject(StorageService);
+  private readonly location = inject(Location);
+  readonly storage          = inject(StorageService);
   private readonly game   = inject(GameService);
 
   readonly bgClass  = this.game.bgClass;
@@ -45,5 +45,5 @@ export class SettingsComponent {
     this.showResetConfirm.set(false);
   }
 
-  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
+  back(): void { this.location.back(); }
 }
