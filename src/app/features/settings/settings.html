@@ -1,32 +1,37 @@
 <div [class]="'screen ' + bgClass()">
   <div class="content">
-    <h2 class="title">Settings</h2>
+
+    <div class="page-title">Settings</div>
 
     <div class="setting-row">
-      <span class="setting-label">Sound</span>
+      <span class="setting-pill">Sound</span>
       <button
-        class="toggle-btn"
+        class="icon-btn"
         [class.on]="storage.soundEnabled()"
         (click)="toggleSound()">
-        {{ storage.soundEnabled() ? 'ON' : 'OFF' }}
+        {{ storage.soundEnabled() ? '🔊' : '🔇' }}
       </button>
     </div>
 
     <div class="setting-row">
-      <span class="setting-label">Background</span>
+      <span class="setting-pill">Background</span>
       <button
-        class="toggle-btn"
+        class="icon-btn"
         [class.on]="storage.backgroundOn()"
         (click)="toggleBackground()">
-        {{ storage.backgroundOn() ? 'ON' : 'OFF' }}
+        {{ storage.backgroundOn() ? '✓' : '✕' }}
       </button>
+    </div>
+
+    <div class="setting-row">
+      <span class="setting-pill">Reset</span>
+      <button class="icon-btn reset-btn" (click)="reset()">🔄</button>
     </div>
 
     <div class="spacer"></div>
 
-    <button class="mn-btn reset-btn" (click)="reset()">Reset to Level 1</button>
-    <button class="mn-btn back-btn" (click)="back()">← Back</button>
-
     <p class="version">v{{ version }}</p>
+    <button class="mn-btn" (click)="back()">Home</button>
+
   </div>
 </div>

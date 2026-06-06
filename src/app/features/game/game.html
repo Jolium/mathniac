@@ -3,22 +3,20 @@
   <!-- Header -->
   <div class="header">
     <div class="stat">
-      <div class="stat-label">Timer</div>
-      <div class="stat-value" [class]="timerClass()">{{ timerDisplay() }}</div>
+      <div class="stat-pill">Timer</div>
+      <div class="stat-box" [class]="timerClass()" [style.background]="timerBoxBg()">
+        {{ timerDisplay() }}
+      </div>
     </div>
 
     <div class="stat center">
-      <div class="stat-label">
-        {{ scoreTarget() > 0 ? scoreTarget() : '∞' }}
-      </div>
-      <div class="stat-value score-val" [style.color]="game.levelColor">
-        {{ game.score() }}
-      </div>
+      <div class="stat-pill">{{ scoreTarget() > 0 ? scoreTarget() : '∞' }}</div>
+      <div class="stat-box" [style.background]="headerBoxBg()">{{ game.score() }}</div>
     </div>
 
     <div class="stat">
-      <div class="stat-label">Goal</div>
-      <div class="stat-value">{{ game.goalRemaining() }}</div>
+      <div class="stat-pill">Goal</div>
+      <div class="stat-box" [style.background]="headerBoxBg()">{{ game.goalRemaining() }}</div>
     </div>
   </div>
 
@@ -45,7 +43,6 @@
     <button
       class="mn-btn nav-btn"
       [disabled]="game.isTicking()"
-      [class.dimmed]="game.isTicking()"
       (click)="goHome()">
       Home
     </button>
@@ -60,7 +57,6 @@
     <button
       class="mn-btn nav-btn"
       [disabled]="game.isTicking()"
-      [class.dimmed]="game.isTicking()"
       (click)="goLevels()">
       Levels
     </button>

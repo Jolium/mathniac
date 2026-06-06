@@ -1,24 +1,29 @@
 <div [class]="'screen ' + bgClass()">
   <div class="content">
-    <h1 class="title">Mathniac</h1>
+
+    <div class="page-title home-title">Mathniac</div>
 
     <div class="nav-buttons">
-      <button class="mn-btn" (click)="nav('/intro')">Intro</button>
-      <button class="mn-btn" (click)="nav('/levels')">Levels</button>
+      <button class="mn-btn" (click)="nav('/intro')">Introduction</button>
+      <button class="mn-btn" (click)="nav('/levels')">Level selection</button>
+      <button class="mn-btn" (click)="nav('/scores')">High scores</button>
       <button class="mn-btn" (click)="nav('/settings')">Settings</button>
-      <button class="mn-btn" (click)="nav('/scores')">Scores</button>
     </div>
 
     <div class="spacer"></div>
 
-    <div class="level-display">
-      <span class="level-label"
-        [style.color]="levelConfig().color"
-        [style.text-shadow]="'0 0 12px ' + levelConfig().color">
-        Level {{ level() }}
-      </span>
+    <button
+      class="mn-btn level-up-btn"
+      [disabled]="level() >= 15"
+      (click)="levelUp()">
+      Level Up
+    </button>
+
+    <div class="level-pill">
+      Level {{ level() }}
     </div>
 
     <button class="mn-btn play-btn" (click)="play()">Play</button>
+
   </div>
 </div>

@@ -4,6 +4,7 @@ import { GameService } from '../../core/services/game.service';
 import { StorageService } from '../../core/services/storage.service';
 import { FirebaseService } from '../../core/services/firebase.service';
 import { GameButtonComponent } from './components/game-button/game-button';
+import { LEVEL_CONFIGS } from '../../core/constants/level-config';
 
 interface ButtonCell { value: number; index: number; selected: boolean; }
 
@@ -48,16 +49,32 @@ export class GameComponent implements OnDestroy {
     return rows;
   });
 
-  timerDisplay = computed(() => {
-    const secs = this.game.countdown() / 10;
-    return secs.toFixed(1) + 's';
-  });
+  timerDisplay = computed(() => Math.ceil(this.game.countdown() / 10).toString());
 
   timerClass = computed(() => {
     const c = this.game.countdown();
     if (c <= 10) return 'danger';
     if (c <= 30) return 'warning';
     return '';
+  });
+
+  headerBoxBg = computed(() => {
+    const level = this.game.level();
+    const colors: Record<string, string> = {
+      green:  'rgba(0,90,0,0.95)',
+      blue:   'rgba(0,0,130,0.95)',
+      violet: 'rgba(90,0,160,0.95)',
+      red:    'rgba(140,0,0,0.95)',
+      silver: 'rgba(70,70,90,0.95)',
+    };
+    return colors[LEVEL_CONFIGS[level - 1].tier] ?? 'rgba(0,90,0,0.95)';
+  });
+
+  timerBoxBg = computed(() => {
+    const c = this.game.countdown();
+    if (c <= 10) return 'rgba(180,0,0,0.95)';
+    if (c <= 30) return 'rgba(155,60,0,0.95)';
+    return this.headerBoxBg();
   });
 
   scoreTarget = computed(() => this.game.config.scoreTarget);

@@ -7,50 +7,46 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 24px 16px;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 20px 24px;
   width: 100%;
   max-width: 480px;
 }
 
-.title {
-  font-family: 'Niconne', cursive;
-  font-size: clamp(2rem, 6vw, 2.8rem);
+.intro-body {
+  width: 100%;
   color: white;
-  text-shadow: 0 0 16px rgba(255,255,255,0.7);
-  text-align: center;
-  margin-bottom: 4px;
-}
+  font-family: 'Courgette', cursive;
+  font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+  line-height: 1.65;
 
-.card {
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 12px;
-  padding: 14px 16px;
-  color: white;
+  p { margin: 0 0 12px; }
 
-  h3 {
-    font-family: 'Courgette', cursive;
-    font-size: 1.1rem;
-    color: #FFD700;
-    margin: 0 0 8px;
-  }
-
-  p, li { font-size: 0.95rem; line-height: 1.5; margin: 6px 0; }
-
-  ul { padding-left: 20px; }
+  strong { color: #FFD700; }
+  em { color: rgba(255,255,255,0.85); }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 6px;
-    td { padding: 3px 8px; font-size: 0.9rem; }
-    td:last-child { text-align: right; color: #FFD700; font-weight: bold; }
+    margin: 4px 0 14px;
+
+    td {
+      padding: 4px 8px;
+      font-size: 0.95rem;
+    }
+
+    td:last-child {
+      text-align: right;
+      color: #FFD700;
+      font-weight: bold;
+    }
   }
 }
 
 .back-btn {
-  margin-top: 8px;
+  margin-top: 4px;
   margin-bottom: 24px;
-  align-self: center;
+  width: 100%;
+  max-width: 320px;
 }

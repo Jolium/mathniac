@@ -9,92 +9,118 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  padding: 24px 16px;
+  padding: 20px 16px 28px;
   width: 100%;
-  max-width: 520px;
+  max-width: 420px;
   min-height: 100dvh;
 }
 
-.title {
-  font-family: 'Niconne', cursive;
-  font-size: clamp(2rem, 6vw, 2.8rem);
-  color: white;
-  text-shadow: 0 0 16px rgba(255,255,255,0.7);
-  margin-bottom: 4px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  width: 100%;
-}
-
-.level-card {
+// ── Circular badge arena ──────────────────────────────
+.badge-arena {
   position: relative;
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
+}
+
+.badge {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  background: rgba(0,0,0,0.55);
-  border: 2px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 10px 6px;
-  min-height: 90px;
+  gap: 1px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
   cursor: not-allowed;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 
   &.unlocked {
     cursor: pointer;
-    border-color: color-mix(in srgb, var(--tier-color) 60%, transparent);
-    box-shadow: 0 0 8px color-mix(in srgb, var(--tier-color) 40%, transparent);
+    border-color: rgba(255,255,255,0.35);
 
-    &:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 16px color-mix(in srgb, var(--tier-color) 70%, transparent);
-    }
+    &:hover:not(.selected) { transform: scale(1.1); }
   }
 
-  &.current {
-    border-width: 3px;
-    border-color: var(--tier-color);
-    box-shadow: 0 0 20px var(--tier-color);
+  &.selected {
+    border: 2.5px solid #FFD700;
+    box-shadow: 0 0 14px rgba(255,215,0,0.65);
+    transform: scale(1.1);
   }
 }
 
-.level-num {
+.outer-badge {
+  width: 52px;
+  height: 52px;
+}
+
+.center-badge {
+  width: 82px;
+  height: 82px;
+  border-radius: 20px;
+  top: 99px;
+  left: 99px;
+}
+
+.badge-num {
   font-family: 'Courgette', cursive;
-  font-size: 1.6rem;
-  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1;
+
+  &.lg { font-size: 1.7rem; }
+}
+
+.badge-check {
+  font-size: 0.5rem;
+  color: #00ff88;
   line-height: 1;
 }
 
-.level-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.75);
-}
-
-.unlock-icon {
-  position: absolute;
-  top: 5px;
-  right: 7px;
-  font-size: 0.65rem;
-  color: #00ff00;
-}
-
-.lock-icon {
-  font-size: 1.2rem;
+.badge-lock {
+  font-size: 0.75rem;
   opacity: 0.3;
 }
 
-.endless {
-  font-size: 1rem;
-  color: #C0C0C0;
+// ── Level stats row ───────────────────────────────────
+.level-stats {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
 }
 
-.back-btn { margin-top: 8px; margin-bottom: 24px; }
+.stat-block {
+  flex: 1;
+  background: rgba(0,0,0,0.65);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 14px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.stat-val {
+  font-family: 'Courgette', cursive;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.stat-lbl {
+  font-family: 'Courgette', cursive;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.5px;
+}
+
+// ── Action buttons ────────────────────────────────────
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.play-btn { font-size: 1.05rem; }

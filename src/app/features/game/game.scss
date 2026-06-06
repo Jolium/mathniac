@@ -22,36 +22,46 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 5px;
   flex: 1;
 
   &.center { flex: 1.4; }
 }
 
-.stat-label {
-  font-family: 'Courgette', cursive;
-  font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 1px;
-}
-
-.stat-value {
+.stat-box {
   font-family: 'Courgette', cursive;
   font-size: clamp(1.4rem, 5vw, 2rem);
   color: white;
-  text-shadow: 0 0 8px rgba(255,255,255,0.5);
-  transition: color 0.3s;
   font-variant-numeric: tabular-nums;
+  min-width: clamp(52px, 14vw, 72px);
+  padding: 4px 10px;
+  border-radius: 10px;
+  text-align: center;
+  transition: background 0.3s;
 
-  &.warning { color: #FFA500; text-shadow: 0 0 10px rgba(255,165,0,0.8); }
-  &.danger  { color: #FF4444; text-shadow: 0 0 12px rgba(255,68,68,0.9); animation: pulse 0.5s infinite; }
+  &.warning { animation: pulse-warn 0.8s infinite; }
+  &.danger  { animation: pulse-danger 0.5s infinite; }
 }
 
-.score-val { font-size: clamp(1.6rem, 5.5vw, 2.2rem); }
+.stat-pill {
+  font-family: 'Courgette', cursive;
+  font-size: clamp(0.65rem, 2.2vw, 0.8rem);
+  color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  padding: 3px 10px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
 
-@keyframes pulse {
+@keyframes pulse-warn {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.5; }
+  50%       { opacity: 0.7; }
+}
+@keyframes pulse-danger {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
 }
 
 // ── Grid ───────────────────────────────────────────────
@@ -90,22 +100,16 @@
   font-size: clamp(0.75rem, 2.5vw, 0.95rem);
   padding: 8px 12px;
   min-width: 70px;
-
-  &.dimmed { opacity: 0.35; cursor: not-allowed; }
 }
 
 .action-btn {
   font-size: clamp(1rem, 3vw, 1.2rem);
   padding: 10px 20px;
   min-width: 100px;
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  color: #000;
-  border-color: #FFD700;
 
   &.refresh {
-    background: linear-gradient(135deg, #1a6600, #33cc00);
-    color: white;
-    border-color: #33cc00;
+    background: linear-gradient(180deg, #1a8800, #33cc00, #1a8800);
+    border-color: #44dd00;
     box-shadow: 0 0 12px rgba(51,204,0,0.5);
   }
 }
@@ -180,22 +184,21 @@
   font-size: 1rem;
   outline: none;
   width: 100%;
-  box-sizing: border-box;
 
   &::placeholder { color: rgba(255,255,255,0.4); }
   &:focus { border-color: #FFD700; }
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: linear-gradient(180deg, #FFD700, #FFA500, #FFD700);
   color: #000;
+  border-color: #FFD700;
   &:disabled { opacity: 0.5; }
 }
 
 .play-btn {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: linear-gradient(180deg, #FFD700, #FFA500, #FFD700);
   color: #000;
-  font-size: 1.1rem;
   border-color: #FFD700;
 }
 

@@ -8,73 +8,64 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px 16px;
+  gap: 14px;
+  padding: 28px 20px 24px;
   width: 100%;
   max-width: 400px;
   min-height: 100dvh;
-}
-
-.title {
-  font-family: 'Niconne', cursive;
-  font-size: clamp(2rem, 6vw, 2.8rem);
-  color: white;
-  text-shadow: 0 0 16px rgba(255,255,255,0.7);
-  text-align: center;
-  margin-bottom: 8px;
 }
 
 .setting-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 12px;
-  padding: 14px 20px;
+  gap: 12px;
 }
 
-.setting-label {
+.setting-pill {
+  flex: 1;
+  background: rgba(0,0,0,0.75);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 50px;
+  padding: 12px 22px;
   font-family: 'Courgette', cursive;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: white;
 }
 
-.toggle-btn {
-  padding: 8px 20px;
-  border-radius: 20px;
-  border: 2px solid rgba(255,255,255,0.3);
-  background: rgba(100, 100, 100, 0.5);
-  color: #aaa;
-  font-size: 1rem;
-  font-weight: bold;
+.icon-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.75);
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
 
   &.on {
-    background: rgba(0, 200, 0, 0.4);
-    border-color: #00ff00;
-    color: #00ff00;
-    box-shadow: 0 0 10px rgba(0,255,0,0.3);
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255,215,0,0.4);
+  }
+
+  &.reset-btn {
+    border-color: #FF4444;
+    box-shadow: 0 0 6px rgba(255,68,68,0.25);
+    &:hover { box-shadow: 0 0 14px rgba(255,68,68,0.5); }
   }
 }
 
-.spacer { flex: 1; min-height: 32px; }
-
-.reset-btn {
-  background: linear-gradient(135deg, #800000, #cc0000);
-  border-color: #ff4444;
-  color: white;
-
-  &:hover { background: linear-gradient(135deg, #cc0000, #ff0000); }
-}
-
-.back-btn { margin-bottom: 16px; }
+.spacer { flex: 1; min-height: 20px; }
 
 .version {
   text-align: center;
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.55);
-  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
   letter-spacing: 1px;
 }

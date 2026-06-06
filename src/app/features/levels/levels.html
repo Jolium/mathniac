@@ -1,38 +1,77 @@
 <div [class]="'screen ' + bgClass()">
   <div class="content">
-    <h2 class="title">Levels</h2>
 
-    <div class="grid">
-      @for (cfg of configs; track cfg.level) {
+    <div class="page-title">Levels</div>
+
+    <!-- Circular badge layout -->
+    <div class="badge-arena">
+
+      <!-- Outer ring: levels 1–14 -->
+      @for (cfg of outerConfigs; track cfg.level; let i = $index) {
         <div
-          class="level-card"
-          [class.unlocked]="isUnlocked(cfg)"
-          [class.current]="cfg.level === currentLevel()"
-          [style.--tier-color]="cfg.color"
-          (click)="playLevel(cfg)">
-
-          <div class="level-num" [style.color]="isUnlocked(cfg) ? cfg.color : '#555'">
+          class="badge outer-badge"
+          [class.unlocked]="isUnlocked(cfg.level)"
+          [class.selected]="selectedLevel() === cfg.level"
+          [style.top]="badgePosition(i).top"
+          [style.left]="badgePosition(i).left"
+          [style.background]="isUnlocked(cfg.level) ? tierGradient(cfg.tier) : 'rgba(20,20,20,0.9)'"
+          (click)="selectLevel(cfg.level)">
+          <span class="badge-num" [style.color]="isUnlocked(cfg.level) ? cfg.color : '#444'">
             {{ cfg.level }}
-          </div>
-
-          @if (isUnlocked(cfg)) {
-            <div class="level-info">
-              <span>⏱ {{ timerSeconds(cfg) }}</span>
-              <span>🎯 {{ cfg.goalValue }}</span>
-              @if (cfg.scoreTarget > 0) {
-                <span>⭐ {{ cfg.scoreTarget }}</span>
-              } @else {
-                <span class="endless">∞</span>
-              }
-            </div>
-            <div class="unlock-icon">✓</div>
+          </span>
+          @if (isUnlocked(cfg.level)) {
+            <span class="badge-check">✓</span>
           } @else {
-            <div class="lock-icon">🔒</div>
+            <span class="badge-lock">🔒</span>
           }
         </div>
       }
+
+      <!-- Center: level 15 -->
+      <div
+        class="badge center-badge"
+        [class.unlocked]="isUnlocked(15)"
+        [class.selected]="selectedLevel() === 15"
+        [style.background]="isUnlocked(15) ? tierGradient(centerConfig.tier) : 'rgba(20,20,20,0.9)'"
+        (click)="selectLevel(15)">
+        <span class="badge-num lg" [style.color]="isUnlocked(15) ? centerConfig.color : '#444'">
+          15
+        </span>
+        @if (isUnlocked(15)) {
+          <span class="badge-check">✓</span>
+        } @else {
+          <span class="badge-lock">🔒</span>
+        }
+      </div>
+
     </div>
 
-    <button class="mn-btn back-btn" (click)="back()">← Back</button>
+    <!-- Stats for selected level -->
+    <div class="level-stats">
+      <div class="stat-block">
+        <div class="stat-val">{{ timerSeconds(selectedConfig()) }}s</div>
+        <div class="stat-lbl">Timer</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">{{ selectedConfig().scoreTarget > 0 ? selectedConfig().scoreTarget : '∞' }}</div>
+        <div class="stat-lbl">Target</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">{{ selectedConfig().goalValue }}</div>
+        <div class="stat-lbl">Goal</div>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="actions">
+      <button
+        class="mn-btn play-btn"
+        [disabled]="!isUnlocked(selectedLevel())"
+        (click)="playSelected()">
+        Play Level {{ selectedLevel() }}
+      </button>
+      <button class="mn-btn" (click)="back()">Home</button>
+    </div>
+
   </div>
 </div>

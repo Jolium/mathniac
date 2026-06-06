@@ -25,6 +25,13 @@ export class HomeComponent {
     this.router.navigate(['/game']);
   }
 
+  levelUp(): void {
+    const current = this.level();
+    if (current >= 15) return;
+    this.storage.setLevel(current + 1);
+    this.game.initGame();
+  }
+
   nav(path: string): void {
     this.router.navigate([path]);
   }
