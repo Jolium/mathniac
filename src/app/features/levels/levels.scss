@@ -19,8 +19,8 @@
 // ── Circular badge arena ──────────────────────────────
 .badge-arena {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 360px;
+  height: 360px;
   flex-shrink: 0;
   margin: 0 auto;
 }
@@ -52,24 +52,24 @@
 }
 
 .outer-badge {
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
 }
 
 .center-badge {
-  width: 82px;
-  height: 82px;
-  border-radius: 20px;
-  top: 99px;
-  left: 99px;
+  width: 112px;
+  height: 112px;
+  border-radius: 26px;
+  top: 124px;
+  left: 124px;
 }
 
 .badge-num {
   font-family: 'Courgette', cursive;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   line-height: 1;
 
-  &.lg { font-size: 1.7rem; }
+  &.lg { font-size: 2rem; }
 }
 
 .badge-check {

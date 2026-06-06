@@ -4,11 +4,14 @@ import { Router } from '@angular/router';
 import { FirebaseService } from '../../core/services/firebase.service';
 import { StorageService } from '../../core/services/storage.service';
 import { GameService } from '../../core/services/game.service';
+import { MnButtonComponent } from '../../shared/components/mn-button/mn-button';
+import { MnTitleComponent } from '../../shared/components/mn-title/mn-title';
 
 @Component({
   selector: 'app-scores',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MnButtonComponent, MnTitleComponent],
   templateUrl: './scores.html',
   styleUrl: './scores.scss',
 })

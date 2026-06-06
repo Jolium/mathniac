@@ -18,7 +18,7 @@
           [style.left]="badgePosition(i).left"
           [style.background]="isUnlocked(cfg.level) ? tierGradient(cfg.tier) : 'rgba(20,20,20,0.9)'"
           (click)="selectLevel(cfg.level)">
-          <span class="badge-num" [style.color]="isUnlocked(cfg.level) ? cfg.color : '#444'">
+          <span class="badge-num" [style.color]="isUnlocked(cfg.level) ? '#FFD700' : '#444'">
             {{ cfg.level }}
           </span>
           @if (isUnlocked(cfg.level)) {

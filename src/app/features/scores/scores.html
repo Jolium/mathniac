@@ -1,6 +1,6 @@
 <div [class]="'screen ' + bgClass()">
   <div class="content">
-    <h2 class="title">Leaderboard</h2>
+    <mn-title label="Leaderboard" />
 
     @if (!firebaseAvailable) {
       <div class="info-card warning">
@@ -35,7 +35,7 @@
       }
       @for (entry of scores(); track entry.id; let i = $index) {
         <div class="score-row" [class.top3]="i < 3">
-          <span class="rank">#{{ i + 1 }}</span>
+          <span class="rank">{{ i + 1 }}</span>
           <span class="name">{{ entry.name }}</span>
           <span class="score-val">{{ entry.score }}</span>
         </div>
@@ -51,6 +51,6 @@
       </div>
     }
 
-    <button class="mn-btn back-btn" (click)="back()">← Back</button>
+    <mn-button label="Home" (press)="back()" />
   </div>
 </div>

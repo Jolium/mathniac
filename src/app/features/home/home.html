@@ -12,14 +12,6 @@
 
     <div class="spacer"></div>
 
-    <div class="btn-group">
-      <mn-button
-        label="Level Up"
-        variant="highlight"
-        [disabled]="level() >= 15"
-        (press)="levelUp()" />
-    </div>
-
     <div class="level-pill">Level {{ level() }}</div>
 
     <div class="btn-group">

@@ -36,18 +36,18 @@ export class LevelsComponent {
 
   tierGradient(tier: string): string {
     const g: Record<string, string> = {
-      green:  'linear-gradient(180deg, #002800, #005500, #002800)',
-      blue:   'linear-gradient(180deg, #000025, #000070, #000025)',
-      violet: 'linear-gradient(180deg, #1a0028, #440070, #1a0028)',
-      red:    'linear-gradient(180deg, #280000, #700000, #280000)',
-      silver: 'linear-gradient(180deg, #303040, #707090, #303040)',
+      green:  'linear-gradient(135deg, #001400, #005500, #00aa00, #005500, #001400)',
+      blue:   'linear-gradient(135deg, #000010, #000055, #0000cc, #000055, #000010)',
+      violet: 'linear-gradient(135deg, #0d0020, #3d0066, #7700cc, #3d0066, #0d0020)',
+      red:    'linear-gradient(135deg, #1a0000, #660000, #cc0000, #660000, #1a0000)',
+      silver: 'linear-gradient(135deg, #1a1a22, #3a3a4a, #6a6a7a, #3a3a4a, #1a1a22)',
     };
     return g[tier] ?? g['green'];
   }
 
   badgePosition(index: number): { top: string; left: string } {
     const angle = (index / 14) * 2 * Math.PI - Math.PI / 2;
-    const cx = 140, cy = 140, r = 105, size = 52;
+    const cx = 180, cy = 180, r = 135, size = 72;
     return {
       left: `${Math.round(cx + r * Math.cos(angle) - size / 2)}px`,
       top:  `${Math.round(cy + r * Math.sin(angle) - size / 2)}px`,

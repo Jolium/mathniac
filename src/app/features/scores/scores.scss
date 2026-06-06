@@ -15,14 +15,6 @@
   min-height: 100dvh;
 }
 
-.title {
-  font-family: 'Niconne', cursive;
-  font-size: clamp(2rem, 6vw, 2.8rem);
-  color: white;
-  text-shadow: 0 0 16px rgba(255,255,255,0.7);
-  margin-bottom: 4px;
-}
-
 .info-card {
   width: 100%;
   background: rgba(0,0,0,0.55);
@@ -84,7 +76,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 3px;
 }
 
 .score-row {
@@ -93,7 +85,7 @@
   background: rgba(0,0,0,0.5);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px;
-  padding: 10px 14px;
+  padding: 10px 22px;
   color: white;
   gap: 10px;
 
@@ -101,6 +93,11 @@
     border-color: rgba(255,215,0,0.4);
     background: rgba(20,20,0,0.6);
   }
+}
+
+.score-row:first-child {
+  .rank, .name { font-size: 1.2rem; }
+  .score-val { font-size: 1.35rem; }
 }
 
 .rank {
@@ -116,6 +113,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 
 .score-val {
@@ -131,4 +129,4 @@
   strong { color: #00ffcc; }
 }
 
-.back-btn { margin-top: 8px; margin-bottom: 24px; }
+mn-button { width: 65%; margin-top: 8px; }
