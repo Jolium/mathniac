@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../../core/services/storage.service';
 import { GameService } from '../../core/services/game.service';
@@ -22,6 +22,9 @@ export class SettingsComponent {
   readonly bgClass  = this.game.bgClass;
   readonly version  = APP_VERSION;
 
+  showResetConfirm = signal(false);
+  readonly resetBg = 'linear-gradient(135deg, #330000 0%, #880000 25%, #cc0000 50%, #880000 75%, #330000 100%)';
+
   toggleSound(): void {
     this.storage.sound = !this.storage.soundEnabled();
   }
@@ -30,10 +33,13 @@ export class SettingsComponent {
     this.storage.background = !this.storage.backgroundOn();
   }
 
-  reset(): void {
-    if (!confirm('Reset progress to Level 1? Your nickname and high score will be kept.')) return;
+  reset(): void      { this.showResetConfirm.set(true); }
+  cancelReset(): void { this.showResetConfirm.set(false); }
+
+  confirmReset(): void {
     this.storage.reset();
     this.game.initGame();
+    this.showResetConfirm.set(false);
   }
 
   back(): void { this.router.navigate(['/home']); }

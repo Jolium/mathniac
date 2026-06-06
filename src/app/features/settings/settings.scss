@@ -91,3 +91,51 @@ mn-button {
   width: 65%;
   align-self: center;
 }
+
+// ── Reset confirm overlay ──────────────────────────────
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.overlay-card {
+  background: rgba(10, 10, 20, 0.96);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 300px;
+  width: 88%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  color: white;
+
+  h2 {
+    font-family: 'Courgette', cursive;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  mn-button { width: 85%; }
+}
+
+.overlay-icon { font-size: 2.5rem; }
+
+.overlay-sub {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  margin: 0;
+}

@@ -34,4 +34,17 @@
     <mn-button label="Home" (press)="back()" />
 
   </div>
+
+  @if (showResetConfirm()) {
+    <div class="overlay">
+      <div class="overlay-card">
+        <div class="overlay-icon">⚠️</div>
+        <h2>Reset Progress?</h2>
+        <p class="overlay-sub">Level resets to 1. Your nickname and high score are kept.</p>
+        <mn-button label="Reset"  [style.--mn-btn-bg]="resetBg" (press)="confirmReset()" />
+        <mn-button label="Cancel" (press)="cancelReset()" />
+      </div>
+    </div>
+  }
+
 </div>
