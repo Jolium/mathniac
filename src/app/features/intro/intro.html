@@ -1,0 +1,67 @@
+<div [class]="'screen ' + bgClass()">
+  <div class="content">
+    <h2 class="title">How to Play</h2>
+
+    <div class="card">
+      <h3>The Goal</h3>
+      <p>
+        Select numbered buttons that <strong>add up exactly</strong> to the
+        <em>Goal</em> value shown at the top of the screen.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Selecting Numbers</h3>
+      <p>
+        Tap any button to select it — it highlights in yellow. Keep tapping
+        more buttons to build your sum. Tap a selected button again to
+        deselect it.
+      </p>
+      <p>
+        The <em>Goal</em> counter ticks down as you select, showing how
+        much is still needed.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>What Breaks Your Combo</h3>
+      <ul>
+        <li>Your running sum <strong>exceeds</strong> the goal → selection cleared.</li>
+        <li>You tap a number whose value is <strong>already selected</strong> → selection cleared.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Scoring</h3>
+      <p>Points depend on how many buttons you combined:</p>
+      <table>
+        <tr><td>2 buttons</td><td>10 pts</td></tr>
+        <tr><td>3 buttons</td><td>18 pts</td></tr>
+        <tr><td>4 buttons</td><td>28 pts</td></tr>
+        <tr><td>5 buttons</td><td>40 pts</td></tr>
+        <tr><td>6 buttons</td><td>54 pts</td></tr>
+      </table>
+      <p>Every <strong>20 points</strong> you earn adds <strong>1 extra second</strong> to your timer — points accumulate across combos, so chaining big combos keeps the clock alive longer.</p>
+    </div>
+
+    <div class="card">
+      <h3>Levels</h3>
+      <p>
+        Each level has a <strong>score target</strong> and a countdown timer.
+        Reach the target before time runs out to unlock the next level.
+        There are 15 levels — level 15 is endless; beat your own high score!
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Tips</h3>
+      <ul>
+        <li>Higher levels add more buttons and harder goals.</li>
+        <li>Listen for the countdown beeps — they start at 5 seconds left.</li>
+        <li>A new high score on level 15 goes to the global leaderboard.</li>
+      </ul>
+    </div>
+
+    <button class="mn-btn back-btn" (click)="back()">← Back</button>
+  </div>
+</div>

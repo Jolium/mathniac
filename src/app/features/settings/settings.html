@@ -1,0 +1,32 @@
+<div [class]="'screen ' + bgClass()">
+  <div class="content">
+    <h2 class="title">Settings</h2>
+
+    <div class="setting-row">
+      <span class="setting-label">Sound</span>
+      <button
+        class="toggle-btn"
+        [class.on]="storage.soundEnabled()"
+        (click)="toggleSound()">
+        {{ storage.soundEnabled() ? 'ON' : 'OFF' }}
+      </button>
+    </div>
+
+    <div class="setting-row">
+      <span class="setting-label">Background</span>
+      <button
+        class="toggle-btn"
+        [class.on]="storage.backgroundOn()"
+        (click)="toggleBackground()">
+        {{ storage.backgroundOn() ? 'ON' : 'OFF' }}
+      </button>
+    </div>
+
+    <div class="spacer"></div>
+
+    <button class="mn-btn reset-btn" (click)="reset()">Reset to Level 1</button>
+    <button class="mn-btn back-btn" (click)="back()">← Back</button>
+
+    <p class="version">v{{ version }}</p>
+  </div>
+</div>

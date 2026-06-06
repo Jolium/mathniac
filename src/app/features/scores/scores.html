@@ -1,0 +1,56 @@
+<div [class]="'screen ' + bgClass()">
+  <div class="content">
+    <h2 class="title">Leaderboard</h2>
+
+    @if (!firebaseAvailable) {
+      <div class="info-card warning">
+        Firebase is not configured yet. Set up your Firebase project in
+        <code>src/environments/environment.ts</code> to enable the leaderboard.
+      </div>
+    }
+
+    @if (canSubmit) {
+      <div class="submit-card">
+        <p>🏆 New high score: <strong>{{ highScore }}</strong></p>
+        <p>Enter a nickname to appear on the leaderboard:</p>
+        <input
+          class="name-input"
+          placeholder="Your nickname (max 20 chars)"
+          [value]="nickname()"
+          (input)="nickname.set($any($event.target).value); nicknameError.set('')"
+          (blur)="nickname.set(nickname().trim())"
+          maxlength="20" />
+        @if (nicknameError()) {
+          <p class="nickname-error">{{ nicknameError() }}</p>
+        }
+        <button class="mn-btn submit-btn" [disabled]="submitting()" (click)="submit()">
+          {{ submitting() ? 'Submitting…' : 'Submit Score' }}
+        </button>
+      </div>
+    }
+
+    <div class="scores-list">
+      @if (scores().length === 0 && firebaseAvailable) {
+        <div class="info-card">Loading scores…</div>
+      }
+      @for (entry of scores(); track entry.id; let i = $index) {
+        <div class="score-row" [class.top3]="i < 3">
+          <span class="rank">#{{ i + 1 }}</span>
+          <span class="name">{{ entry.name }}</span>
+          <span class="score-val">{{ entry.score }}</span>
+        </div>
+      }
+    </div>
+
+    @if (storage.highScore > 0) {
+      <div class="personal-best">
+        Your best: <strong>{{ storage.highScore }}</strong>
+        @if (storage.nickname) {
+          as <em>{{ storage.nickname }}</em>
+        }
+      </div>
+    }
+
+    <button class="mn-btn back-btn" (click)="back()">← Back</button>
+  </div>
+</div>

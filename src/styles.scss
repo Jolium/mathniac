@@ -1,0 +1,64 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Courgette', cursive;
+  background: #000;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// ── Shared button style ───────────────────────────────────
+.mn-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(0.95rem, 3vw, 1.15rem);
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+  user-select: none;
+
+  &:hover:not(:disabled) {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 12px rgba(255,255,255,0.2);
+  }
+
+  &:active:not(:disabled) { transform: scale(0.97); }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+// ── Background themes ─────────────────────────────────────
+.bg-on {
+  background: linear-gradient(
+    135deg,
+    #000 0%,   #000 8%,
+    #FF0000 20%, #FFD700 30%, #FF0000 42%,
+    #000 52%,  #000 60%,
+    #0000FF 72%, #00ff00 82%, #0000FF 92%,
+    #000 100%
+  );
+}
+
+.bg-15 {
+  background: linear-gradient(
+    135deg,
+    #000 0%,   #000 8%,
+    #CD7F32 18%, #FFD700 28%, #CD7F32 38%,
+    #000 46%,  #C0C0C0 54%, #000 62%,
+    #CD7F32 72%, #FFD700 82%, #CD7F32 90%,
+    #000 100%
+  );
+}
+
+.bg-off { background: #000; }

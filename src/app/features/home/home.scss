@@ -1,0 +1,59 @@
+.screen {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 16px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 100dvh;
+}
+
+.title {
+  font-family: 'Niconne', cursive;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: white;
+  text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 2px 8px rgba(0,0,0,0.9);
+  margin: 16px 0;
+  letter-spacing: 2px;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.spacer { flex: 1; }
+
+.level-display {
+  margin: 8px 0;
+}
+
+.level-label {
+  font-family: 'Courgette', cursive;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: bold;
+}
+
+.play-btn {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #000;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  border-color: #FFD700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  margin-bottom: 16px;
+
+  &:hover {
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+  }
+}

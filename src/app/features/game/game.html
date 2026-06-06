@@ -1,0 +1,123 @@
+<div [class]="'screen ' + bgClass()">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="stat">
+      <div class="stat-label">Timer</div>
+      <div class="stat-value" [class]="timerClass()">{{ timerDisplay() }}</div>
+    </div>
+
+    <div class="stat center">
+      <div class="stat-label">
+        {{ scoreTarget() > 0 ? scoreTarget() : '∞' }}
+      </div>
+      <div class="stat-value score-val" [style.color]="game.levelColor">
+        {{ game.score() }}
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Goal</div>
+      <div class="stat-value">{{ game.goalRemaining() }}</div>
+    </div>
+  </div>
+
+  <!-- Button Grid -->
+  <div class="grid-area">
+    <div class="button-grid">
+      @for (row of buttonRows(); track $index) {
+        <div class="button-row">
+          @for (btn of row; track btn.index) {
+            <app-game-button
+              [value]="btn.value"
+              [selected]="btn.selected"
+              [level]="game.level()"
+              [isTicking]="game.isTicking()"
+              (press)="game.pressButton(btn.index)" />
+          }
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="bottom-bar">
+    <button
+      class="mn-btn nav-btn"
+      [disabled]="game.isTicking()"
+      [class.dimmed]="game.isTicking()"
+      (click)="goHome()">
+      Home
+    </button>
+
+    <button
+      class="mn-btn action-btn"
+      [class.refresh]="game.phase() === 'playing'"
+      (click)="onActionClick()">
+      {{ actionLabel() }}
+    </button>
+
+    <button
+      class="mn-btn nav-btn"
+      [disabled]="game.isTicking()"
+      [class.dimmed]="game.isTicking()"
+      (click)="goLevels()">
+      Levels
+    </button>
+  </div>
+
+  <!-- Win Overlay -->
+  @if (game.phase() === 'won') {
+    <div class="overlay">
+      <div class="overlay-card">
+        <div class="overlay-icon">🎉</div>
+        <h2>Level {{ game.level() }} Unlocked!</h2>
+        <p class="overlay-sub">Score: <strong [style.color]="game.levelColor">{{ game.score() }}</strong></p>
+        @if (winCountdown() > 0) {
+          <p class="countdown-hint">Continue in {{ winCountdown() }}…</p>
+          <button class="mn-btn" disabled>Continue →</button>
+        } @else {
+          <button class="mn-btn play-btn" (click)="continueAfterWin()">Continue →</button>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- High Score Overlay -->
+  @if (game.phase() === 'highscore') {
+    <div class="overlay">
+      <div class="overlay-card">
+        <div class="overlay-icon">🏆</div>
+        <h2>New High Score!</h2>
+        <p class="hs-score" [style.color]="game.levelColor">{{ game.score() }}</p>
+        @if (!submitted()) {
+          <p class="overlay-sub">Submit to the leaderboard?</p>
+          @if (storage.nickname) {
+            <p class="overlay-sub">as <strong>{{ storage.nickname }}</strong></p>
+          } @else {
+            <input
+              class="name-input"
+              placeholder="Your nickname"
+              [value]="nickname()"
+              (input)="nickname.set($any($event.target).value); nicknameError.set('')"
+              (blur)="nickname.set(nickname().trim())"
+              maxlength="20" />
+          @if (nicknameError()) {
+            <p class="nickname-error">{{ nicknameError() }}</p>
+          }
+          }
+          <button
+            class="mn-btn submit-btn"
+            [disabled]="submitting() || !nickname().trim()"
+            (click)="submitHighScore()">
+            {{ submitting() ? 'Submitting…' : 'Submit Score' }}
+          </button>
+        } @else {
+          <p class="submitted-ok">✓ Score submitted!</p>
+        }
+        <button class="mn-btn" (click)="continueHighscore()">Continue</button>
+      </div>
+    </div>
+  }
+
+</div>

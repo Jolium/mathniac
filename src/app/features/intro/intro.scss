@@ -1,0 +1,56 @@
+.screen {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 16px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.title {
+  font-family: 'Niconne', cursive;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  color: white;
+  text-shadow: 0 0 16px rgba(255,255,255,0.7);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: white;
+
+  h3 {
+    font-family: 'Courgette', cursive;
+    font-size: 1.1rem;
+    color: #FFD700;
+    margin: 0 0 8px;
+  }
+
+  p, li { font-size: 0.95rem; line-height: 1.5; margin: 6px 0; }
+
+  ul { padding-left: 20px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    td { padding: 3px 8px; font-size: 0.9rem; }
+    td:last-child { text-align: right; color: #FFD700; font-weight: bold; }
+  }
+}
+
+.back-btn {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  align-self: center;
+}

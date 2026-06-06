@@ -1,0 +1,38 @@
+<div [class]="'screen ' + bgClass()">
+  <div class="content">
+    <h2 class="title">Levels</h2>
+
+    <div class="grid">
+      @for (cfg of configs; track cfg.level) {
+        <div
+          class="level-card"
+          [class.unlocked]="isUnlocked(cfg)"
+          [class.current]="cfg.level === currentLevel()"
+          [style.--tier-color]="cfg.color"
+          (click)="playLevel(cfg)">
+
+          <div class="level-num" [style.color]="isUnlocked(cfg) ? cfg.color : '#555'">
+            {{ cfg.level }}
+          </div>
+
+          @if (isUnlocked(cfg)) {
+            <div class="level-info">
+              <span>⏱ {{ timerSeconds(cfg) }}</span>
+              <span>🎯 {{ cfg.goalValue }}</span>
+              @if (cfg.scoreTarget > 0) {
+                <span>⭐ {{ cfg.scoreTarget }}</span>
+              } @else {
+                <span class="endless">∞</span>
+              }
+            </div>
+            <div class="unlock-icon">✓</div>
+          } @else {
+            <div class="lock-icon">🔒</div>
+          }
+        </div>
+      }
+    </div>
+
+    <button class="mn-btn back-btn" (click)="back()">← Back</button>
+  </div>
+</div>

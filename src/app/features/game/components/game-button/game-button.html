@@ -1,0 +1,17 @@
+<button
+  type="button"
+  class="game-btn"
+  [class.selected]="selected()"
+  [class.silver-tier]="level() === 15"
+  [class.pressed]="isPressed"
+  [class.active]="isTicking()"
+  [disabled]="!isTicking()"
+  [attr.aria-pressed]="selected()"
+  [attr.aria-label]="'Number ' + value()"
+  (pointerdown)="onPointerDown($event)"
+  (pointerup)="onPointerUp()"
+  (pointerleave)="onPointerUp()"
+  (keydown.enter)="onKeyActivate($event)"
+  (keydown.space)="onKeyActivate($event)">
+  {{ value() === 0 ? '?' : value() }}
+</button>

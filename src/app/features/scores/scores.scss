@@ -1,0 +1,134 @@
+.screen {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 16px;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100dvh;
+}
+
+.title {
+  font-family: 'Niconne', cursive;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  color: white;
+  text-shadow: 0 0 16px rgba(255,255,255,0.7);
+  margin-bottom: 4px;
+}
+
+.info-card {
+  width: 100%;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  text-align: center;
+
+  code { color: #FFD700; }
+
+  &.warning { border-color: rgba(255,165,0,0.4); }
+}
+
+.submit-card {
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #FFD700;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: white;
+  font-size: 0.95rem;
+
+  strong { color: #FFD700; }
+}
+
+.name-input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::placeholder { color: rgba(255,255,255,0.4); }
+  &:focus { border-color: #FFD700; }
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #000;
+  &:disabled { opacity: 0.5; }
+}
+
+.nickname-error {
+  color: #FF4444;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.scores-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: white;
+  gap: 10px;
+
+  &.top3 {
+    border-color: rgba(255,215,0,0.4);
+    background: rgba(20,20,0,0.6);
+  }
+}
+
+.rank {
+  font-family: 'Courgette', cursive;
+  font-size: 1rem;
+  color: #FFD700;
+  min-width: 32px;
+}
+
+.name {
+  flex: 1;
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.score-val {
+  font-family: 'Courgette', cursive;
+  font-size: 1.1rem;
+  color: #00ffcc;
+}
+
+.personal-best {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  em { color: #FFD700; }
+  strong { color: #00ffcc; }
+}
+
+.back-btn { margin-top: 8px; margin-bottom: 24px; }
