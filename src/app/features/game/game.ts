@@ -163,7 +163,7 @@ export class GameComponent implements OnDestroy {
 
   goLevels(): void {
     if (this.game.isTicking()) return;
-    this.router.navigate(['/levels']);
+    this.router.navigate(['/levels'], { replaceUrl: true });
   }
 
   private startWinCountdown(): void {

@@ -68,7 +68,7 @@ export class LevelsComponent {
     if (!this.isUnlocked(level)) return;
     this.storage.setLevel(level);
     this.game.initGame();
-    this.router.navigate(['/game']);
+    this.router.navigate(['/game'], { replaceUrl: true });
   }
 
   back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }

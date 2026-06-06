@@ -25,7 +25,7 @@ export class HomeComponent {
 
   play(): void {
     this.game.initGame();
-    this.router.navigate(['/game']);
+    this.router.navigate(['/game'], { replaceUrl: true });
   }
 
   levelUp(): void {
@@ -36,6 +36,6 @@ export class HomeComponent {
   }
 
   nav(path: string): void {
-    this.router.navigate([path]);
+    this.router.navigate([path], { replaceUrl: true });
   }
 }
