@@ -45,5 +45,5 @@ export class SettingsComponent {
     this.showResetConfirm.set(false);
   }
 
-  back(): void { this.router.navigate(['/home']); }
+  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
 }

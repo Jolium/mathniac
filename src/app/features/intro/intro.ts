@@ -18,5 +18,5 @@ export class IntroComponent {
 
   readonly bgClass = this.game.bgClass;
 
-  back(): void { this.router.navigate(['/home']); }
+  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
 }

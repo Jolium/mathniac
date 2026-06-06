@@ -71,5 +71,5 @@ export class LevelsComponent {
     this.router.navigate(['/game']);
   }
 
-  back(): void { this.router.navigate(['/home']); }
+  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
 }

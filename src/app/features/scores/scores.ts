@@ -54,5 +54,5 @@ export class ScoresComponent {
     this.submitting.set(false);
   }
 
-  back(): void { this.router.navigate(['/home']); }
+  back(): void { this.router.navigate(['/home'], { replaceUrl: true }); }
 }

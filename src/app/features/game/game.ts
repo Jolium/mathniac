@@ -158,7 +158,7 @@ export class GameComponent implements OnDestroy {
 
   goHome(): void {
     if (this.game.isTicking()) return;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
 
   goLevels(): void {
